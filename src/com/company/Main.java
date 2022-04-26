@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -7,12 +9,18 @@ public class Main {
         Author author2 = new Author("Андрей", "Платонов");
 	    Book book1 = new Book("Убик", author1,1969 );
         Book book2 = new Book("Котлован", author2, 1930);
-        System.out.println("Название книги: " + book1.getName());
-        System.out.println("Фамилия автора: " + book1.getAuthor().getAuthorSurname());
-        System.out.println("Год публикации: " + book1.getPublisherYear());
-        book1.setPublisherYear(1968);
-        System.out.println("Год публикации: " + book1.getPublisherYear());
 
+
+        Book[] books = new Book[5];
+        addBook(book1, books, 0);
+        addBook(book2, books, 1);
+        for (Book book : books) {
+            System.out.println(book.getAuthor().getAuthorName() + " " + book.getAuthor().getAuthorSurname() + ": " + book.getName() + ": " + book.getPublisherYear());
+        }
 
     }
+    public static void addBook (Book book, Book[] books, int target){
+        books[target] = book;
+    }
+
 }
